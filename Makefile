@@ -5,10 +5,11 @@ MKDIR ?= mkdir
 INSTALL ?= install
 NPM ?= npm
 NODE ?= node
+RMRF ?= rm -rf
 
 build:
 	$(MKDIR) $@
-build/index.html: template.html spec.markdown | build
+build/index.html: template.html spec/v1.markdown | build
 	$(PANDOC) --standalone --template $< $(word 2,$^) --output $@
 build/%.json: metaschemas/%.json
 	$(INSTALL) -m 0664 $< $@
@@ -21,6 +22,10 @@ node_modules: package.json package-lock.json
 .PHONY: test
 test: node_modules
 	$(NODE) test/runner.js
+
+.PHONY: clean
+clean:
+	$(RMRF) build
 
 .PHONY: all
 all: test build/index.html build/v1.json build/.nojekyll
