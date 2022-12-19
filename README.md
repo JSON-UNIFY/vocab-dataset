@@ -29,7 +29,7 @@ following command:
 make
 ```
 
-The above command assumes you have [Node.js](https://nodejs.org) and
+The above command assumes you have [Node.js](https://nodejs.org) (>=18) and
 [Pandoc](https://pandoc.org) installed, and that you are running on a UNIX-like
 environment. If you are running Windows, you should be able to locally run this
 project using WSL, MSYS2 or Cygwin.
