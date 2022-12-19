@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-unify.github.io/vocab-dataset/v1.json",
+  "properties": {
+    "foo": {
+      "type": "string"
+    }
+  },
+  "dataset": []
+}
