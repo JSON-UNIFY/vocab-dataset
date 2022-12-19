@@ -1,5 +1,5 @@
 name: Dataset
-
+on: ['push']
 jobs:
   test:
     runs-on: ubuntu-latest
