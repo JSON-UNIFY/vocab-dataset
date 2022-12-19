@@ -4,10 +4,7 @@ The JSON Schema Dataset Vocabulary
 This repository defines a JSON Schema vocabulary for defining JSON-compatible
 datasets using JSON Schema.
 
-Links
------
-
-- [Specification](https://json-unify.github.io/vocab-dataset/)
+[**Read the specification online**](https://json-unify.github.io/vocab-dataset/)
 
 Metaschemas
 -----------
@@ -15,6 +12,11 @@ Metaschemas
 | Version | Link                                               |
 |---------|----------------------------------------------------|
 | `v1`    | https://json-unify.github.io/vocab-dataset/v1.json |
+
+Tooling
+-------
+
+TODO: List a few tools that implement the vocabulary
 
 Contributing
 ------------
