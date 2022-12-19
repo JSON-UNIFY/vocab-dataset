@@ -11,9 +11,9 @@ build:
 	$(MKDIR) $@
 build/%.html: template.html spec/%.markdown | build
 	$(PANDOC) --standalone --template $< $(word 2,$^) --output $@
-build/%.json: metaschemas/%.json
+build/%.json: metaschemas/%.json | build
 	$(INSTALL) -m 0664 $< $@
-build/%: static/%
+build/%: static/% | build
 	$(INSTALL) -m 0664 $< $@
 
 node_modules: package.json package-lock.json
