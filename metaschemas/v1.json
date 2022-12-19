@@ -1,0 +1,5 @@
+{
+  "$id": "https://json-unify.github.io/vocab-dataset/v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "A vocabulary for defining datasets using JSON Schema"
+}

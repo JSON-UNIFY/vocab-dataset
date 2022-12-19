@@ -1,0 +1,8 @@
+{
+  "name": "@json-schema/vocab-dataset",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@hyperjump/json-schema": "^0.23.4"
+  }
+}

@@ -1,0 +1,25 @@
+---
+title: JSON Schema Dataset
+description: A JSON Schema vocabulary for defining datasets
+---
+
+Introduction
+------------
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Semper eget duis at tellus at urna
+condimentum mattis. Pulvinar etiam non quam lacus suspendisse faucibus. Enim
+diam vulputate ut pharetra sit amet aliquam id diam. Ut tortor pretium viverra
+suspendisse potenti nullam ac. Congue quisque egestas diam in. Lectus nulla at
+volutpat diam. Justo laoreet sit amet cursus sit amet. Amet aliquam id diam
+maecenas ultricies mi eget. Tempor commodo ullamcorper a lacus vestibulum sed.
+Velit sed ullamcorper morbi tincidunt ornare massa eget egestas. Aenean et
+tortor at risus viverra adipiscing at in. Nec feugiat in fermentum posuere urna
+nec. Aliquet nibh praesent tristique magna sit amet. Neque viverra justo nec
+ultrices dui sapien eget. Sit amet est placerat in egestas erat imperdiet sed
+euismod.
+
+Keywords
+--------
+
+### `dataset`
