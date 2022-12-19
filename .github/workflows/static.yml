@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
+      - run: sudo apt install --yes pandoc
       - run: make
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
