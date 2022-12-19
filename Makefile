@@ -4,6 +4,7 @@ PANDOC ?= pandoc
 MKDIR ?= mkdir
 INSTALL ?= install
 NPM ?= npm
+NODE ?= node
 
 build:
 	$(MKDIR) $@
@@ -17,4 +18,9 @@ build/%: static/%
 node_modules: package.json package-lock.json
 	$(NPM) ci
 
-all: build/index.html build/v1.json build/.nojekyll
+.PHONY: test
+test:
+	$(NODE) test/runner.js
+
+.PHONY: all
+all: test build/index.html build/v1.json build/.nojekyll
