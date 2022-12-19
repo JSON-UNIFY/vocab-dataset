@@ -9,7 +9,7 @@ RMRF ?= rm -rf
 
 build:
 	$(MKDIR) $@
-build/index.html: template.html spec/v1.markdown | build
+build/%.html: template.html spec/%.markdown | build
 	$(PANDOC) --standalone --template $< $(word 2,$^) --output $@
 build/%.json: metaschemas/%.json
 	$(INSTALL) -m 0664 $< $@
@@ -28,4 +28,4 @@ clean:
 	$(RMRF) build
 
 .PHONY: all
-all: test build/index.html build/v1.json build/.nojekyll
+all: test build/index.html build/v1.html build/v1.json build/.nojekyll
