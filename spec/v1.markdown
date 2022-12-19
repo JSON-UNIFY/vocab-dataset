@@ -4,7 +4,8 @@ description: A vocabulary for defining datasets using JSON and JSON Schema
 version: v1
 ---
 
-[TODO: Short introduction paragraph]
+This vocabulary introduces a set of annotation keywords for defining
+JSON-compatible datasets using JSON Schema 2020-12.
 
 Motivation
 ----------
@@ -16,6 +17,11 @@ Keywords
 --------
 
 ### `dataset`
+
+This keyword MUST be defined at the root of the schema. This keyword MUST be a
+JSON array where each item successfully validates against the schema. An empty
+array is permitted. A dataset document is not valid if it does not set this
+keyword.
 
 Examples
 --------

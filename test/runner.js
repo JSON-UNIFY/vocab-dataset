@@ -17,7 +17,10 @@ for (const version of [ 'v1' ]) {
         const metaschema = await jsonschema.get(metaschemaId);
         assert.ok(metaschema);
         const schema = JSON.parse(readFileSync(resolve(DIRNAME, 'metaschemas', version, mode, file), 'utf8'));
-        assert.equal(schema.$schema, metaschemaId);
+        if (schema.$schema) {
+          assert.equal(schema.$schema, metaschemaId);
+        }
+
         const output = await jsonschema.validate(metaschema, schema, jsonschema.BASIC);
         const expected = mode === 'valid' ? true : false;
         if (output.valid !== expected) {
