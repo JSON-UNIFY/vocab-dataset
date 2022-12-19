@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-unify.github.io/vocab-dataset/v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [ "foo" ],
+  "properties": {
+    "foo": {
+      "type": "number"
+    }
+  },
+  "dataset": [
+    { "foo": 1 },
+    { "foo": 1 }
+  ]
+}
