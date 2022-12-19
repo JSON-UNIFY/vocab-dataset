@@ -19,7 +19,7 @@ node_modules: package.json package-lock.json
 	$(NPM) ci
 
 .PHONY: test
-test:
+test: node_modules
 	$(NODE) test/runner.js
 
 .PHONY: all
