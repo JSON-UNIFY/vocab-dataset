@@ -10,7 +10,7 @@ jsonschema.setShouldMetaValidate(true);
 
 for (const version of [ 'v1' ]) {
   jsonschema.add(JSON.parse(readFileSync(resolve(DIRNAME, '..', 'metaschemas', `${version}.json`), 'utf8')));
-  for (const mode of [ 'valid' ]) {
+  for (const mode of [ 'valid', 'invalid' ]) {
     for (const file of readdirSync(resolve(DIRNAME, 'metaschemas', version, mode))) {
       test(`metaschema.${version}.${mode}.${file}`, async () => {
         const metaschemaId = `https://json-unify.github.io/vocab-dataset/${version}.json`;
@@ -19,10 +19,12 @@ for (const version of [ 'v1' ]) {
         const schema = JSON.parse(readFileSync(resolve(DIRNAME, 'metaschemas', version, mode, file), 'utf8'));
         assert.equal(schema.$schema, metaschemaId);
         const output = await jsonschema.validate(metaschema, schema, jsonschema.BASIC);
-        if (!output.valid) {
+        const expected = mode === 'valid' ? true : false;
+        if (output.valid !== expected) {
           console.error(JSON.stringify(output, null, 2));
         }
-        assert.ok(output.valid);
+
+        assert.equal(output.valid, expected);
       });
     }
   }
