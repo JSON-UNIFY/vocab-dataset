@@ -6,6 +6,8 @@ import { readdirSync, readFileSync } from 'node:fs';
 import jsonschema from '@hyperjump/json-schema';
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
+jsonschema.setShouldMetaValidate(true);
+
 for (const version of [ 'v1' ]) {
   jsonschema.add(JSON.parse(readFileSync(resolve(DIRNAME, '..', 'metaschemas', `${version}.json`), 'utf8')));
   for (const mode of [ 'valid' ]) {
@@ -16,9 +18,9 @@ for (const version of [ 'v1' ]) {
         assert.ok(metaschema);
         const schema = JSON.parse(readFileSync(resolve(DIRNAME, 'metaschemas', version, mode, file), 'utf8'));
         assert.equal(schema.$schema, metaschemaId);
-        const output = await jsonschema.validate(metaschema, 'foo', jsonschema.FLAG);
+        const output = await jsonschema.validate(metaschema, schema, jsonschema.BASIC);
         if (!output.valid) {
-          console.error(JSON.stringify(output.errors, null, 2));
+          console.error(JSON.stringify(output, null, 2));
         }
         assert.ok(output.valid);
       });
