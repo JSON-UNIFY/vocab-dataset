@@ -53,10 +53,10 @@ keyword.
 
 "Dataset" can be thought of as our "Data Product", using the "can of soup" analogy from above.
 
-### `data`
+### `data` (required)
 This keyword contains the data itself.
 
-### `meta`
+### `meta` (required?)
 This is where we would link any references to <i>Searching For</i> data, it is for the external world of the dataset. Who is using it? Why do they need it? Where was it created, etc. This can reference the JSON-schema object if it already exists, or be added here.
 
 ### `meta.format`
@@ -73,7 +73,7 @@ Refers to any description of the data set
 ### `meta.source` (optional)
 Refers to where was the data derived from
 
-### `concepts`
+### `concepts` (required?)
 This is where we define <i>Searching Within</i> data properties.
 
 ### `concepts.headers`
@@ -87,6 +87,9 @@ There may be certain features of our data set that are not explicit in our data 
 
 ### `lineage` (optional)
 This property enables recording of transformations on the data, which can be very important for data scientists to understand how data was changed and trace back any logic. This can reveal any bias, or be critical for legal and regulatory compliance in certain industries.
+
+### `governance` (optional)
+This property includes any service level agreements between parties, roles, security, access, between parties who want to use the data.
 
 Examples
 --------
