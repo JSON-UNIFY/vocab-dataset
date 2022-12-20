@@ -10,8 +10,36 @@ JSON-compatible datasets using JSON Schema 2020-12.
 Motivation
 ----------
 
-[TODO: Explain why having data + metadata + schema together makes sense. What
-problem is this solving?]
+The top findings from User Experience Research of data scientist and business intelligence analysts were that the most frequent and the most impactful pain points in their workflows stemmed from working with what we define as incomplete data products.
+
+We define a data product, at its most fundamental unit, as simply as one would define a can of soup as a product. The can of soup comes with a Nutrition Label, making it easy to search for ingredients within the canned product, as well as a UPC Label, brand, and product name, making the can of soup easy to find, and finally the soup itself. 
+
+Likewise, when we get a data product, we want to define a singular object that contains:
+
+- The dataset, what we will refer to as the **'data'**.
+- Data for how to search <i>in</i> the dataset, what we will refer to as **'schema'** data.
+- Data for how to search <i>for</i> the dataset, what we will refer to as **'meta'** data.
+
+These three elements need to exist in order for a data product to be considered complete, and need to be together as one object.
+
+### Why Data Products Are Essential
+
+Data teams often report not knowing where data comes from, or complex 3rd party tools that require licenses or experience to use in order to get important and often critical information on data. The result of a lack of a standard means that hundreds, even thousands of data sets are throwin in storage, and then left to others to sort through, with no understanding of where data came from, or what terms in columns mean.
+
+This lack of understanding about the data can result in wasted time in meetings, or worse, in wrong knowledge being created, which often can result in real-world negative consequences with deadlines missed, or at its worst, products that may be harmful to health because of a lack of knowledge about other existing data that could have prevented errors.
+
+Combining data, metadata, and schema is essential because it saves time, prevents errors, reduces ambiguity, and having a singular extensible object that can be used by others enhances productivity and innovative capabilities. Most importantly to businesses, it saves businesses time, money, and risk.
+
+### Data Contracts vs Data Products vs Schemas
+
+There is a lot of debate between terms such as 'data products', and 'data contracts', and the proposed definitions have one goal: the simplest, least friction, and easiest definitions to learn and begin using, independent of any commercial product, in a generalizable fashion.
+
+- **Data Products** have the data, the schema, and the meta data all in one object.
+
+- A **Data Contract** can contain any information required to complete a specific Data Product. For example, if the data set is exceptionally large, or hosted by a 3rd party, it may be necessary to list a reference to the data set. There may be a set of compliance, requirements, and/or governance features for a data product. For example, if Federal Regulations require data lineage for medical data, then defining how that will be captured, and whether it is captured in the data product can be added in an SLA (service level agreement). This is similar to on a can of soup <i>Made In The USA</i> is shown in order to be in compliance with country of origin rules. There may be business of financial rules associated with the data product independent of the core of the data product.
+
+- A schema is often referred to as a 'contract', and while that a schema as a contract certainly makes sense, clear definitions are helpful for standards, especially for this vocabulary specification proposal. A schema does not necessarily require contain the regulatory requirement and the regulatory data set fullfillment in the same object. 
+
 
 Keywords
 --------
