@@ -3,7 +3,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "A vocabulary for defining datasets using JSON and JSON Schema",
   "$vocabulary": {
-    "https://json-schema.org/draft/2020-12/vocab/core": false,
+    "https://json-schema.org/draft/2020-12/vocab/core": true,
     "https://json-schema.org/draft/2020-12/vocab/applicator": false,
     "https://json-schema.org/draft/2020-12/vocab/unevaluated": false,
     "https://json-schema.org/draft/2020-12/vocab/validation": false,
