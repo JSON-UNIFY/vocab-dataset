@@ -29,6 +29,10 @@
         "type": "string"
       }
     },
+    "datasetDocumentation": {
+      "type": "string",
+      "format": "uri"
+    },
     "datasetLineage": {
       "type": "array",
       "items": {
