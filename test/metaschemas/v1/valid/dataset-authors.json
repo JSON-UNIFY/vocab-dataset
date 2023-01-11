@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-unify.github.io/vocab-dataset/v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "foo": {
+      "type": "string"
+    }
+  },
+  "dataset": [
+    { "foo": "bar" }
+  ],
+  "datasetAuthors": [
+    "Juan Cruz Viotti",
+    "Ron Itelman"
+  ]
+}
