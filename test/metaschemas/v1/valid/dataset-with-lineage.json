@@ -1,5 +1,6 @@
 {
   "$schema": "https://json-unify.github.io/vocab-dataset/v1.json",
+  "title": "My dataset",
   "dataset": [
     1,
     2
