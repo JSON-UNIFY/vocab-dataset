@@ -19,8 +19,19 @@
   "required": [ "dataset", "title" ],
   "properties": {
     "dataset": {
-      "type": "array",
-      "$comment": "TODO: Can we validate the items against the instance?"
+      "anyOf": [
+        { "type": "array" },
+        {
+          "type": "object",
+          "required": [ "$ref" ],
+          "properties": {
+            "$ref": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      ]
     },
     "datasetAuthors": {
       "type": "array",
