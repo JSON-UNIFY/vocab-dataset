@@ -40,6 +40,15 @@ There is a lot of debate between terms such as 'data products', and 'data contra
 
 - When thinking of a **schema vs data contract** it is helpful to have clear boundaries. While colloquially a schema can often be referred to as a 'contract', and while that a schema as a contract certainly makes sense, there are clear and simple differing definitions in this vocabulary specification proposal. A schema does not necessarily require a data product definition, and can be be completely independent of containing business relationships that define which schema to use with which data products, for which problems, and which regulatory needs. A new language definition to define these emerging and important needs in the data community is required. Therefore, a data contract can be thought of as the meta-schema that requires grocery stores to have canned soup (data products) that have nutrition labels (schema).
 
+Constraints
+-----------
+
+### `title`
+
+Using this vocabulary enforces the use of the
+[`title`][json-schema-2020-12-title] keyword from the JSON Schema
+[Meta-Data][json-schema-2020-12-meta-data] vocabulary at the root of the
+schema.
 
 Keywords
 --------
@@ -47,14 +56,29 @@ Keywords
 ### `dataset`
 
 This keyword MUST be defined at the root of the schema. This keyword MUST be a
-JSON array where each item successfully validates against the schema. An empty
-array is permitted. A dataset document is not valid if it does not set this
-keyword.
+JSON array where each item successfully validates against the schema, or a JSON
+object that makes use of the [`$ref`][json-schema-2020-12-ref] keyword from the
+[Core][json-schema-2020-12-core] JSON Schema vocabulary to point to a remote
+JSON array. An empty array is permitted.
 
-"Dataset" can be thought of as our "Data Product", using the "can of soup" analogy from above.
+A dataset document is not valid if it does not set this keyword.
 
-### `data` (required)
-This keyword contains the data itself.
+### `datasetAuthors`
+
+This optional keyword denotes the authors of the given dataset. If set, it MUST
+consist of a non-empty JSON array of strings.
+
+### `datasetDocumentation`
+
+This optional keyword denotes the URL to human-readable documentation for the
+dataset. If set, it MUST consist of a URI [RFC3986][RFC3986] string.
+
+### `datasetLineage`
+
+This optional keyword records the lineage of the dataset defined by the
+`dataset` keyword. It records modifications to the dataset is a manner that
+resembles version control.  If set, it MUST correspond to a JSON Patch
+[RFC6902][RFC6902] document.
 
 ### `meta` (required?)
 This is where we would link any references to <i>Searching For</i> data, it is for the external world of the dataset. Who is using it? Why do they need it? Where was it created, etc. This can reference the JSON-schema object if it already exists, or be added here.
@@ -91,6 +115,9 @@ This property enables recording of transformations on the data, which can be ver
 ### `governance` (optional)
 This property includes any service level agreements between parties, roles, security, access, between parties who want to use the data.
 
+Recommendations
+---------------
+
 Examples
 --------
 
@@ -98,3 +125,9 @@ Acknowledgments
 ---------------
 
 [json-schema-2020-12]: https://json-schema.org/draft/2020-12/json-schema-core.html
+[json-schema-2020-12-core]: https://json-schema.org/draft/2020-12/json-schema-core.html#name-the-json-schema-core-vocabu
+[json-schema-2020-12-meta-data]: https://json-schema.org/draft/2020-12/json-schema-validation.html#name-a-vocabulary-for-basic-meta
+[json-schema-2020-12-ref]: https://json-schema.org/draft/2020-12/json-schema-core.html#ref
+[json-schema-2020-12-title]: https://json-schema.org/draft/2020-12/json-schema-validation.html#name-title-and-description
+[RFC3986]: https://www.rfc-editor.org/rfc/rfc3986
+[RFC6902]: https://www.rfc-editor.org/rfc/rfc6902
