@@ -5,14 +5,14 @@ version: v1
 ---
 
 This vocabulary introduces a set of annotation keywords for defining
-JSON-compatible datasets using JSON Schema 2020-12.
+JSON-compatible datasets using [JSON Schema 2020-12][json-schema-2020-12].
 
 Motivation
 ----------
 
 The top findings from User Experience Research of data scientist and business intelligence analysts were that the most frequent and the most impactful pain points in their workflows stemmed from working with what we define as incomplete data products.
 
-We define a data product, at its most fundamental unit, as simply as one would define a can of soup as a product. The can of soup comes with a Nutrition Label, making it easy to search for ingredients within the canned product, as well as a UPC Label, brand, and product name, making the can of soup easy to find, and finally the soup itself. 
+We define a data product, at its most fundamental unit, as simply as one would define a can of soup as a product. The can of soup comes with a Nutrition Label, making it easy to search for ingredients within the canned product, as well as a UPC Label, brand, and product name, making the can of soup easy to find, and finally the soup itself.
 
 Likewise, when we get a data product, we want to define a singular object that contains:
 
@@ -96,3 +96,5 @@ Examples
 
 Acknowledgments
 ---------------
+
+[json-schema-2020-12]: https://json-schema.org/draft/2020-12/json-schema-core.html
