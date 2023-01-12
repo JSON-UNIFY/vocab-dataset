@@ -16,7 +16,7 @@
     { "$ref": "https://json-schema.org/draft/2020-12/schema" }
   ],
   "type": "object",
-  "required": [ "dataset" ],
+  "required": [ "dataset", "title" ],
   "properties": {
     "dataset": {
       "type": "array",
