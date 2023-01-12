@@ -80,43 +80,22 @@ This optional keyword records the lineage of the dataset defined by the
 resembles version control.  If set, it MUST correspond to a JSON Patch
 [RFC6902][RFC6902] document.
 
-### `meta` (required?)
-This is where we would link any references to <i>Searching For</i> data, it is for the external world of the dataset. Who is using it? Why do they need it? Where was it created, etc. This can reference the JSON-schema object if it already exists, or be added here.
-
-### `meta.format`
-This keyword contains how the data is formatted.
-- row: [['column_A', 'column_B'], [1, 2, 3], [4, 5, 6]]
-- columnar: { "column_A": [1, 2, 3], "column_B":[4, 5, 6] }
-
-### `meta.markdown` (optional)
-Refers to any markdown documentation of the dataset
-
-### `meta.description` (optional)
-Refers to any description of the data set
-
 ### `meta.source` (optional)
 Refers to where was the data derived from
-
-### `concepts` (required?)
-This is where we define <i>Searching Within</i> data properties.
-
-### `concepts.headers`
-This is where the headers are defined, whether a reference to the JSON-schema object, created newly, or if the information already exists in the JSON-Schema object it can be ignored.
-
-### `concepts.values`
-Reducing ambiguity is a main goal of semantic information, and being able to define that column A's definition of the word "Quality" may refer to the "quality control team", and column B's definition may refer to the "inspection approval process by regulators" is incredibly valuable to understanding data. Concepts.values is where we can define the specific meaning of values, relative to individual columns
-
-### `concepts.features`
-There may be certain features of our data set that are not explicit in our data set headers or values. For example, a data scientist may want to add that a certain value in a certain column is related to an outlier event. The Concepts.Features table allows us to add custom labels/features to a column or value, in order to enrich the data set.
-
-### `lineage` (optional)
-This property enables recording of transformations on the data, which can be very important for data scientists to understand how data was changed and trace back any logic. This can reveal any bias, or be critical for legal and regulatory compliance in certain industries.
 
 ### `governance` (optional)
 This property includes any service level agreements between parties, roles, security, access, between parties who want to use the data.
 
 Recommendations
 ---------------
+
+### Metadata
+
+Metadata for the dataset is a key element for a data product to be considered
+complete. The use of this vocabulary encourages schema authors to make use of
+the JSON Schema [Meta-Data][json-schema-2020-12-meta-data] vocabulary at the
+top-level of the schema and in any sub-properties it defines as thoroughly as
+possible.
 
 Examples
 --------
