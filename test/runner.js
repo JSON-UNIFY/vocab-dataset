@@ -8,6 +8,11 @@ const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 jsonschema.setShouldMetaValidate(true);
 
+jsonschema.addMediaTypePlugin('application/json', {
+  parse: async (response) => [JSON.parse(await response.text()), undefined],
+  matcher: (path) => path.endsWith(".json")
+});
+
 for (const version of [ 'v1' ]) {
   jsonschema.add(JSON.parse(readFileSync(resolve(DIRNAME, '..', 'metaschemas', `${version}.json`), 'utf8')));
   for (const mode of [ 'valid', 'invalid' ]) {
