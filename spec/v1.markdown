@@ -32,7 +32,7 @@ Combining data, metadata, and schema is essential because it saves time, prevent
 
 ### Data Contracts vs Data Products vs Schemas
 
-There is a lot of debate between terms such as 'data products', and 'data contracts', and the proposed definitions have one goal: the simplest, least friction, and easiest definitions to learn and begin using, independent of any commercial product, in a generalizable fashion.
+There is a lot of debate between terms such as 'data products', and 'data contracts', and the proposed definitions have one goal: the simplest, least friction, and easiest definitions to learn and begin using, independent of any commercial product, in a generalizable fashion. A data product is a meta-schema for combining the data, schema, and metadata information in one object, and a data contract has any governance agreements about the data product. Therefore, all data contracts are schemas, but a schema is not necessarily a data contract for a data product. A schema can certainly be called a data contract, but for clarity and brevity, 'data contract' has a specific meaning when using JSON-Unify.
 
 **Data Products as Defined in the JSON-Unify Vocabulary** 
 Data products have the data (or reference to it), the schema (conceptual definitions in the data), and the meta data (information about the data not included in the data set) all in one object. They are a complete unit, and just like consumer products, an important goal is to make the developer experience of a data product as efficient and smooth as possible for them to achieve their tasks with data. The simple and fundamental rule of having the meta, schema, and data information bundled into one unlocks value for data consumers and producers.
