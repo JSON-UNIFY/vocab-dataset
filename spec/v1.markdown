@@ -17,8 +17,8 @@ We define a data product, at its most fundamental unit, as simply as one would d
 Likewise, when we get a data product, we want to define a singular object that contains:
 
 - The dataset, what we will refer to as the **'data'**.
-- Data for how to search <i>in</i> the dataset, what we will refer to as **'schema'** data.
-- Data for how to search <i>for</i> the dataset, what we will refer to as **'meta'** data.
+- Data for how to search <i>in</i> the dataset, what we will refer to as **'schema'** data (such as concepts used in headers and values).
+- Data for how to search <i>for</i> the dataset, what we will refer to as **'meta'** data (such as the title, source, and business purpose).
 
 These three elements need to exist in order for a data product to be considered complete, and need to be together as one object.
 
@@ -34,11 +34,18 @@ Combining data, metadata, and schema is essential because it saves time, prevent
 
 There is a lot of debate between terms such as 'data products', and 'data contracts', and the proposed definitions have one goal: the simplest, least friction, and easiest definitions to learn and begin using, independent of any commercial product, in a generalizable fashion.
 
-- **Data Products** have the data, the schema, and the meta data all in one object.
+**Data Products as Defined in the JSON-Unify Vocabulary** 
+Data products have the data (or reference to it), the schema (conceptual definitions in the data), and the meta data (information about the data not included in the data set) all in one object. They are a complete unit, and just like consumer products, an important goal is to make the developer experience of a data product as efficient and smooth as possible for them to achieve their tasks with data. The simple and fundamental rule of having the meta, schema, and data information bundled into one unlocks value for data consumers and producers.
 
-- A **Data Contract** contains the information that specifies what is a complete Data Product given a specific business need beyond the simple definition of a Data Product. There may be a set of compliance, requirements, and/or governance features for a data product. Federal Regulations may require (for example) data lineage for medical data, then defining how that will be captured, and whether it is captured in the data product can be added in an SLA (service level agreement). A Data Contract may alter or define a Data Contract so that data is a third party reference versus being included in the data product itself (the data may be exceptionally large, there might be legal or privacy rules, etc.). The country of origin (lineage), UPC label, and the nutrition label are all part of contractual requirement for a grocery store to sell a can of soup. However, for FDA submission to sell a new product, a modified data contract may be required, even though the contents might be the same.
+**Data Contract as Defined in the JSON-Unify Vocabulary** 
+Specifies requirements between parties who share & communicate data products. There may be a set of compliance, requirements, and/or governance features for a data product between sender and receiver of a data product. The data product hasn't changed, but agreements between users of the data might be differentiated. One group may say *Data Product X will use Data Contract Y*, and another may say *Data Product X will use Data Contract Z*.
 
-- When thinking of a **schema vs data contract** it is helpful to have clear boundaries. While colloquially a schema can often be referred to as a 'contract', and while that a schema as a contract certainly makes sense, there are clear and simple differing definitions in this vocabulary specification proposal. A schema does not necessarily require a data product definition, and can be be completely independent of containing business relationships that define which schema to use with which data products, for which problems, and which regulatory needs. A new language definition to define these emerging and important needs in the data community is required. Therefore, a data contract can be thought of as the meta-schema that requires grocery stores to have canned soup (data products) that have nutrition labels (schema).
+### Example Data Contract for a Data Product
+- Federal Regulations may require certain data lineage for medical data, and defining how that will be captured can be added in a SLA (service level agreement) of a data product. A data contract may define a collection of multiple service level agreements. A hospital might have the same data product for internal (employee) and external (FDA regulators) users, and this enables modularity.
+
+### Data Contracts using the Can of Soup Example
+Selling food products requires listing a country of origin (lineage) on our can of soup, UPC label (meta data), and the nutrition label (schema), as part of a contractual requirement for a grocery store to legally sell a can of soup. While most food products might require these elements, a can of soup might have service level agreements with the supplier that about how to handle cans that are dented, whereas a bag of chips would not. If all cans of soup share the same collection of agreements, all different brands can share a reference to a singular data contract for the industry, versus each brand independently having their own contract.
+
 
 Constraints
 -----------
