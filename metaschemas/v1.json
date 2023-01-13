@@ -27,7 +27,7 @@
           "properties": {
             "$ref": {
               "type": "string",
-              "format": "uri"
+              "format": "uri-reference"
             }
           }
         }
@@ -42,7 +42,7 @@
     },
     "datasetDocumentation": {
       "type": "string",
-      "format": "uri"
+      "format": "uri-reference"
     },
     "datasetLineage": {
       "$ref": "https://schemas.sourcemeta.com/jsonpatch/patch/v1.json"
