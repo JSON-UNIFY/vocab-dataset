@@ -20,6 +20,10 @@ build/apple-touch-icon.png: build/icon-180x180.png | build
 	$(INSTALL) -m 0664 $< $@
 build/favicon.ico: build/icon-32x32.png | build
 	$(CONVERT) $^ $@
+build/examples: | build
+	$(MKDIR) $@
+build/examples/%.json: examples/%.json | build/examples
+	$(INSTALL) -m 0664 $< $@
 
 build/%: static/% | build
 	$(INSTALL) -m 0664 $< $@
@@ -45,4 +49,5 @@ all: test \
 	build/icon-192x192.png \
  	build/icon-512x512.png \
 	build/apple-touch-icon.png \
+	build/examples/idempotent-http-methods.json \
 	build/.nojekyll

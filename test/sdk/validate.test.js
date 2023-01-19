@@ -1,6 +1,11 @@
 import test from 'node:test';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'url';
 import { strict as assert } from 'node:assert';
+import { readdirSync, readFileSync } from 'node:fs';
 import { validate } from '../../sdk.js';
+
+const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 
 const testCases = [
   {
@@ -63,9 +68,16 @@ const testCases = [
   }
 ]
 
+const EXAMPLES = resolve(ROOT, 'examples');
+for (const file of readdirSync(EXAMPLES)) {
+  const dataset = JSON.parse(readFileSync(resolve(EXAMPLES, file), 'utf8'));
+  testCases.push({ name: file, valid: true, dataset });
+}
+
 for (const testCase of testCases) {
   test(testCase.name, async () => {
     const result = await validate(testCase.dataset);
     assert.equal(result.valid, testCase.valid);
   });
 }
+
