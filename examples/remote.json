@@ -1,5 +1,5 @@
 {
-  "$id": "https://json-unify.github.io/vocab-dataset/examples/idempotent-http-methods.json",
+  "$id": "https://json-unify.github.io/vocab-dataset/examples/remote.json",
   "$schema": "https://json-unify.github.io/vocab-dataset/v1.json",
   "title": "A remotely located dataset",
   "$ref": "https://schemas.sourcemeta.com/http1.1/method/v1.json",
