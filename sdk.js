@@ -49,3 +49,11 @@ export async function validate (dataset) {
 
   return metaschemaResult;
 }
+
+export async function read (dataset) {
+  const result = [];
+  for (const row of dataset.dataset) {
+    result.push(row);
+  }
+  return result;
+}
