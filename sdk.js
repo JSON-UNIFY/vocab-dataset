@@ -67,9 +67,19 @@ export async function read (dataset) {
     result.push(row);
   }
 
-  if (dataset.datasetPatch) {
-    return jsonpatch.applyPatch(data, dataset.datasetPatch).newDocument;
+  const finalResult = dataset.datasetPatch
+    ? jsonpatch.applyPatch(data, dataset.datasetPatch).newDocument
+    : result;
+
+  const identifier = dataset.$id ||
+    `https://json-unify.github.io/vocab-dataset/${await getRandomString()}`;
+  addSchema(dataset);
+  for (const row of finalResult) {
+    const rowResult = await jsonschemaValidate(identifier, row, BASIC);
+    if (!rowResult.valid) {
+      throw new Error(`Invalid row: ${row}`)
+    }
   }
 
-  return result;
+  return finalResult;
 }
