@@ -51,4 +51,5 @@ all: test \
 	build/apple-touch-icon.png \
 	build/examples/idempotent-http-methods.json \
 	build/examples/fibonacci-10.json \
+	build/examples/remote.json \
 	build/.nojekyll
