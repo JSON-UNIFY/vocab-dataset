@@ -29,7 +29,7 @@ node_modules: package.json package-lock.json
 
 .PHONY: test
 test: node_modules
-	$(NODE) test/runner.js
+	$(NODE) test/index.js
 
 .PHONY: clean
 clean:

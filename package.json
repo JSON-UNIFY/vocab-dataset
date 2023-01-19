@@ -7,6 +7,6 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@hyperjump/json-schema": "^0.23.4"
+    "@hyperjump/json-schema": "^1.1.2"
   }
 }
