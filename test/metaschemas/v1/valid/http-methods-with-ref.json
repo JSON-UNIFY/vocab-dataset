@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-unify.github.io/vocab-dataset/v1.json",
+  "title": "List of basic HTTP methods",
+  "allOf": [ { "$ref": "https://schemas.sourcemeta.com/http1.1/method/v1.json" } ],
+  "dataset": [ "GET", "POST", "PUT", "DELETE", "PATCH" ]
+}
