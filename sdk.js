@@ -4,6 +4,7 @@ import { randomBytes } from 'node:crypto';
 import { fileURLToPath } from 'url';
 import { readFileSync } from 'node:fs';
 import fetch from 'node-fetch';
+import * as jsonpatch from 'fast-json-patch/index.mjs';
 import {
   addSchema,
   addMediaTypePlugin,
@@ -64,6 +65,10 @@ export async function read (dataset) {
 
   for (const row of data) {
     result.push(row);
+  }
+
+  if (dataset.datasetPatch) {
+    return jsonpatch.applyPatch(data, dataset.datasetPatch).newDocument;
   }
 
   return result;

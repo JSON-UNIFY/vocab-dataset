@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@hyperjump/json-schema": "^1.1.2",
+    "fast-json-patch": "^3.1.1",
     "node-fetch": "^3.3.0"
   }
 }

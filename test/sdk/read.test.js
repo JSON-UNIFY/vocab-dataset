@@ -34,7 +34,22 @@ const testCases = [
         $ref: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json'
       }
     }
-  }
+  },
+  {
+    name: 'remote scalar dataset with patch',
+    data: [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 999 ],
+    dataset: {
+      $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
+      title: 'List of integers',
+      type: 'integer',
+      dataset: {
+        $ref: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json'
+      }
+      datasetPatch: [
+        { op: 'add', path: '/-', value: 999 }
+      ]
+    }
+  },
 ]
 
 for (const testCase of testCases) {
