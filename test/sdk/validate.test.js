@@ -4,6 +4,16 @@ import { validate } from '../../sdk.js';
 
 const testCases = [
   {
+    name: 'valid dataset with embedded schema',
+    valid: true,
+    dataset: {
+      $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
+      title: 'List of integers',
+      type: 'integer',
+      dataset: [ 1, 2, 3 ]
+    }
+  },
+  {
     name: 'valid dataset with external schema',
     valid: true,
     dataset: {
@@ -29,6 +39,16 @@ const testCases = [
     dataset: {
       $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
       title: 'List of basic HTTP methods'
+    }
+  },
+  {
+    name: 'invalid dataset with embedded schema',
+    valid: false,
+    dataset: {
+      $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
+      title: 'List of integers',
+      type: 'integer',
+      dataset: [ 1, 2.1, 3 ]
     }
   },
   {
