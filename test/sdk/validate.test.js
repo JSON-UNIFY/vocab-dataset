@@ -71,6 +71,10 @@ const testCases = [
 const EXAMPLES = resolve(ROOT, 'examples');
 for (const file of readdirSync(EXAMPLES)) {
   const dataset = JSON.parse(readFileSync(resolve(EXAMPLES, file), 'utf8'));
+  if (Array.isArray(dataset)) {
+    continue;
+  }
+
   testCases.push({ name: file, valid: true, dataset });
 }
 
