@@ -3,6 +3,7 @@ import { promisify } from 'node:util';
 import { randomBytes } from 'node:crypto';
 import { fileURLToPath } from 'url';
 import { readFileSync } from 'node:fs';
+import fetch from 'node-fetch';
 import {
   addSchema,
   addMediaTypePlugin,
@@ -39,7 +40,11 @@ export async function validate (dataset) {
 
   addSchema(dataset, identifier);
 
-  for (const row of dataset.dataset) {
+  const data = Array.isArray(dataset.dataset)
+    ? dataset.dataset
+    : await (await fetch(dataset.dataset.$ref)).json();
+
+  for (const row of data) {
     const rowResult = await jsonschemaValidate(identifier, row, BASIC);
     if (!rowResult.valid) {
       console.log(row);
@@ -52,8 +57,14 @@ export async function validate (dataset) {
 
 export async function read (dataset) {
   const result = [];
-  for (const row of dataset.dataset) {
+
+  const data = Array.isArray(dataset.dataset)
+    ? dataset.dataset
+    : await (await fetch(dataset.dataset.$ref)).json();
+
+  for (const row of data) {
     result.push(row);
   }
+
   return result;
 }

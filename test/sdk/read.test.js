@@ -22,6 +22,18 @@ const testCases = [
       type: 'integer',
       dataset: [ 1, 2, 3 ]
     }
+  },
+  {
+    name: 'external scalar dataset',
+    data: [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 ],
+    dataset: {
+      $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
+      title: 'Fibonacci example',
+      type: 'integer',
+      dataset: {
+        $ref: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json'
+      }
+    }
   }
 ]
 
