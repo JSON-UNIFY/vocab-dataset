@@ -10,7 +10,7 @@ jsonschema.setShouldMetaValidate(true);
 
 jsonschema.addMediaTypePlugin('application/json', {
   parse: async (response) => [JSON.parse(await response.text()), undefined],
-  matcher: (path) => path.endsWith(".json")
+  matcher: (path) => path.endsWith('.json')
 });
 
 for (const version of [ 'v1' ]) {
