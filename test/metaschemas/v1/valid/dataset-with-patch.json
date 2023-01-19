@@ -5,7 +5,8 @@
     1,
     2
   ],
-  "datasetLineage": [
-    { "op": "add", "value": 1 }
+  "datasetPatch": [
+    { "op": "add", "value": 1, "path": "/-" },
+    { "op": "add", "value": 2, "path": "/-" }
   ]
 }

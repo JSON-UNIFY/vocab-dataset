@@ -46,6 +46,9 @@
     },
     "datasetLineage": {
       "$ref": "https://schemas.sourcemeta.com/jsonpatch/patch/v1.json"
+    },
+    "datasetPatch": {
+      "$ref": "https://schemas.sourcemeta.com/jsonpatch/patch/v1.json"
     }
   }
 }
