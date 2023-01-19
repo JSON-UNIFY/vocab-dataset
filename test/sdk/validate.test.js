@@ -14,6 +14,24 @@ const testCases = [
     }
   },
   {
+    name: 'valid dataset with external schema and no allOf',
+    valid: true,
+    dataset: {
+      $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
+      title: 'List of basic HTTP methods',
+      $ref: 'https://schemas.sourcemeta.com/http1.1/method/v1.json',
+      dataset: [ 'GET', 'POST', 'PUT', 'DELETE' ]
+    }
+  },
+  {
+    name: 'no dataset keyword',
+    valid: false,
+    dataset: {
+      $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
+      title: 'List of basic HTTP methods'
+    }
+  },
+  {
     name: 'invalid dataset with external schema',
     valid: false,
     dataset: {
