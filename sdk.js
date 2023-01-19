@@ -8,7 +8,7 @@ import {
   addMediaTypePlugin,
   validate as jsonschemaValidate
 } from '@hyperjump/json-schema/draft-2020-12';
-import { defineVocabulary } from '@hyperjump/json-schema/experimental';
+import { defineVocabulary, BASIC } from '@hyperjump/json-schema/experimental';
 
 // Register vocabulary
 const ROOT = dirname(fileURLToPath(import.meta.url));
@@ -29,6 +29,23 @@ async function getRandomString() {
 }
 
 export async function validate (dataset) {
-  const identifier = dataset.$id || `https://json-unify.github.io/vocab-dataset/${await getRandomString()}`;
-  return jsonschemaValidate('https://json-unify.github.io/vocab-dataset/v1.json', dataset);
+  const identifier = dataset.$id ||
+    `https://json-unify.github.io/vocab-dataset/${await getRandomString()}`;
+  const metaschemaResult = await jsonschemaValidate('https://json-unify.github.io/vocab-dataset/v1.json',
+    dataset, BASIC);
+  if (!metaschemaResult.valid) {
+    return metaschemaResult;
+  }
+
+  addSchema(dataset, identifier);
+
+  for (const row of dataset.dataset) {
+    const rowResult = await jsonschemaValidate(identifier, row, BASIC);
+    if (!rowResult.valid) {
+      console.log(row);
+      return rowResult;
+    }
+  }
+
+  return metaschemaResult;
 }
