@@ -44,7 +44,7 @@ const testCases = [
       type: 'integer',
       dataset: {
         $ref: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json'
-      }
+      },
       datasetPatch: [
         { op: 'add', path: '/-', value: 999 }
       ]
