@@ -34,11 +34,11 @@ Combining data, metadata, and schema is essential because it saves time, prevent
 
 There is a lot of debate between terms such as 'data products', and 'data contracts', and the proposed definitions have one goal: the simplest, least friction, and easiest definitions to learn and begin using, independent of any commercial product, in a generalizable fashion. A data product is a meta-schema for combining the data, schema, and metadata information in one object, and a data contract has any governance agreements about the data product. Therefore, all data contracts are schemas, but a schema is not necessarily a data contract for a data product. A schema can certainly be called a data contract, but for clarity and brevity, 'data contract' has a specific meaning when using JSON-Unify.
 
-**Data Products as Defined in the JSON-Unify Vocabulary** 
+**Data Products as Defined in the JSON-Unify Vocabulary**
 
 Data products have the data (or reference to it), the schema (conceptual definitions in the data), and the meta data (information about the data not included in the data set) all in one object. They are a complete unit, and just like consumer products, an important goal is to make the developer experience of a data product as efficient and smooth as possible for them to achieve their tasks with data. The simple and fundamental rule of having the meta, schema, and data information bundled into one unlocks value for data consumers and producers.
 
-**Data Contract as Defined in the JSON-Unify Vocabulary** 
+**Data Contract as Defined in the JSON-Unify Vocabulary**
 
 Specifies requirements between parties who share & communicate data products. There may be a set of compliance, requirements, and/or governance features for a data product between sender and receiver of a data product. The data product hasn't changed, but agreements between users of the data might be differentiated. One group may say *Data Product X will use Data Contract Y*, and another may say *Data Product X will use Data Contract Z*.
 
@@ -81,13 +81,6 @@ consist of a non-empty JSON array of strings.
 
 This optional keyword denotes the URL to human-readable documentation for the
 dataset. If set, it MUST consist of a URI [RFC3986][RFC3986] string.
-
-### `datasetLineage`
-
-This optional keyword records the lineage of the dataset defined by the
-`dataset` keyword. It records modifications to the dataset is a manner that
-resembles version control.  If set, it MUST correspond to a JSON Patch
-[RFC6902][RFC6902] document.
 
 ### `meta.source` (optional)
 Refers to where was the data derived from
