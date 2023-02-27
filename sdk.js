@@ -34,9 +34,25 @@ async function getRandomDatasetId() {
 }
 
 export async function bundle (dataset) {
-  return Object.assign({}, dataset, typeof dataset.dataset === 'string' ? {
-    dataset: await (await fetch(dataset.dataset)).json()
-  } : {});
+  const result = Object.assign({}, dataset);
+  if (typeof result.dataset === 'string') {
+    const data = await fetch(result.dataset);
+    const contentType = data.headers.get('content-type');
+    if (contentType.startsWith('application/json')) {
+      result.dataset = await data.json();
+    } else if (contentType.startsWith('text/csv')) {
+      const content = await data.text();
+      result.dataset = content.split('\n').map((line) => {
+        return line.trim().split(',').map((word) => {
+          return word.trim().slice(1, word.length - 1);
+        });
+      });
+    } else {
+      throw new Error(`Unknown content type: ${contentType}`);
+    }
+  }
+
+  return result;
 }
 
 export async function validate (dataset) {
