@@ -50,8 +50,6 @@ export async function bundle (dataset) {
           return word.trim().slice(1, word.length - 1);
         });
       });
-
-      console.log(result.dataset);
     } else {
       throw new Error(`Unknown content type: ${contentType}`);
     }
