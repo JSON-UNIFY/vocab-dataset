@@ -35,15 +35,16 @@ const testCases = [
   },
   {
     name: 'remote scalar dataset with patch',
-    data: [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 999 ],
+    data: [ 0, 2, 2, 4, 6, 10, 16, 26, 42, 68 ],
     dataset: {
       $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
       title: 'List of integers',
       type: 'integer',
       dataset: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json',
-      datasetPatch: [
-        { op: 'add', path: '/-', value: 999 }
-      ]
+      datasetTransform: {
+        $map: { $eval: 'dataset' },
+        'each(x)': { $eval: 'x * 2' }
+      }
     }
   },
 ]

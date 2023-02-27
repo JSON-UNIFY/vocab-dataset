@@ -5,13 +5,13 @@ import { randomBytes } from 'node:crypto';
 import { fileURLToPath } from 'url';
 import { readFileSync } from 'node:fs';
 import fetch from 'node-fetch';
-import * as jsonpatch from 'fast-json-patch/index.mjs';
 import {
   addSchema,
   addMediaTypePlugin,
   validate as jsonschemaValidate
 } from '@hyperjump/json-schema/draft-2020-12';
 import { defineVocabulary, BASIC } from '@hyperjump/json-schema/experimental';
+import jsone from 'json-e';
 
 // Register dataset vocabulary
 const BASE_URL = 'https://json-unify.github.io/vocab-dataset';
@@ -81,9 +81,12 @@ export async function validate (dataset) {
 
 export async function read (dataset) {
   const newDataset = await bundle(dataset);
-  if (newDataset.datasetPatch) {
-    jsonpatch.applyPatch(newDataset.dataset, newDataset.datasetPatch);
+  if (newDataset.datasetTransform) {
+    newDataset.dataset = jsone(newDataset.datasetTransform, {
+      dataset: newDataset.dataset
+    });
   }
+
   const result = await validate(newDataset);
   if (!result.valid) {
     throw new Error('Invalid dataset');

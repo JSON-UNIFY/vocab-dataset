@@ -5,7 +5,8 @@
   "type": "integer",
   "dataset": "https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json",
   "datasetAuthors": [ "Juan Cruz Viotti <jv@jviotti.com>" ],
-  "datasetPatch": [
-    { "op": "add", "path": "/-", "value": 999999 }
-  ]
+  "datasetTransform": {
+    "$map": { "$eval": "dataset" },
+    "each(x)": { "$eval": "x * 2" }
+  }
 }

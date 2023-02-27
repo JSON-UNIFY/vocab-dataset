@@ -5,7 +5,7 @@
     1,
     2
   ],
-  "datasetPatch": [
+  "datasetTransform": [
     { "op": "add", "value": 1, "path": "/-" },
     { "op": "add", "value": 2, "path": "/-" }
   ]

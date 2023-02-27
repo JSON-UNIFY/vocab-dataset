@@ -35,8 +35,9 @@
       "type": "string",
       "format": "uri-reference"
     },
-    "datasetPatch": {
-      "$ref": "https://schemas.sourcemeta.com/jsonpatch/patch/v1.json"
+    "datasetTransform": {
+      "type": "object",
+      "$comment": "TODO Validate JSON-e"
     }
   }
 }

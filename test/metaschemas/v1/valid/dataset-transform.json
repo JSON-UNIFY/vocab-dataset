@@ -5,7 +5,8 @@
     1,
     2
   ],
-  "datasetPatch": [
-    { "op": "add", "value": 1 }
-  ]
+  "datasetTransform": {
+    "$map": { "$eval": "dataset" },
+    "each(x)": { "$eval": "x + 1" }
+  }
 }
