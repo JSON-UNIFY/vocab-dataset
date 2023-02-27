@@ -42,7 +42,6 @@ export async function bundle (dataset) {
 export async function validate (dataset) {
   const identifier = dataset.$id || await getRandomDatasetId();
   const newDataset = await bundle(dataset);
-
   const mockMetaschema = {
     $id: await getRandomDatasetId(),
     $schema: 'https://json-schema.org/draft/2020-12/schema',
@@ -50,9 +49,7 @@ export async function validate (dataset) {
       { $ref: `${BASE_URL}/v1.json` },
       {
         properties: {
-          dataset: {
-            items: { $ref: identifier }
-          }
+          dataset: { items: { $ref: identifier } }
         }
       }
     ]
