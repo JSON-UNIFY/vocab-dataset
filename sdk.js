@@ -41,6 +41,7 @@ export async function bundle (dataset) {
     if (contentType.startsWith('application/json')) {
       result.dataset = await data.json();
     } else if (contentType.startsWith('text/csv')) {
+      // TODO: Improve CSV parsing to handle commas, etc
       const content = await data.text();
       result.dataset = content.split('\n').filter((line) => {
         return line.trim().length > 0;
