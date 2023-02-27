@@ -55,4 +55,5 @@ all: test \
 	build/examples/fibonacci-10.json \
 	build/examples/remote.json \
 	build/examples/country-codes.csv \
+	build/examples/country-codes.json \
 	build/.nojekyll
