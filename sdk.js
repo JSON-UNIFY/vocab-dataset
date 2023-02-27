@@ -73,7 +73,7 @@ export async function read (dataset) {
 
   const identifier = dataset.$id ||
     `https://json-unify.github.io/vocab-dataset/${await getRandomString()}`;
-  addSchema(dataset);
+  addSchema(dataset, identifier);
   for (const row of finalResult) {
     const rowResult = await jsonschemaValidate(identifier, row, BASIC);
     if (!rowResult.valid) {
