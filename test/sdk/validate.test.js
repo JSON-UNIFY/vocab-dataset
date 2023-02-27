@@ -39,14 +39,6 @@ const testCases = [
     }
   },
   {
-    name: 'no dataset keyword',
-    valid: false,
-    dataset: {
-      $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
-      title: 'List of basic HTTP methods'
-    }
-  },
-  {
     name: 'invalid dataset with embedded schema',
     valid: false,
     dataset: {

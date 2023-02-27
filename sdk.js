@@ -33,28 +33,37 @@ async function getRandomDatasetId() {
   return `${BASE_URL}/random/${result.toString('hex')}`
 }
 
+export async function bundle (dataset) {
+  const newDataset = Object.assign({}, dataset);
+  if (typeof newDataset.dataset === 'string') {
+    newDataset.dataset = await (await fetch(newDataset.dataset)).json();
+  }
+
+  return newDataset;
+}
+
 export async function validate (dataset) {
   const identifier = dataset.$id || await getRandomDatasetId();
-  const metaschemaResult = await jsonschemaValidate(
-    `${BASE_URL}/v1.json`, dataset, BASIC);
-  if (!metaschemaResult.valid) {
-    return metaschemaResult;
-  }
+  const newDataset = await bundle(dataset);
 
-  addSchema(dataset, identifier);
-  const data = Array.isArray(dataset.dataset)
-    ? dataset.dataset
-    : await (await fetch(dataset.dataset)).json();
+  const mockMetaschema = {
+    $id: await getRandomDatasetId(),
+    $schema: 'https://json-schema.org/draft/2020-12/schema',
+    allOf: [
+      { $ref: `${BASE_URL}/v1.json` },
+      {
+        properties: {
+          dataset: {
+            items: { $ref: identifier }
+          }
+        }
+      }
+    ]
+  };
 
-  for (const row of data) {
-    const rowResult = await jsonschemaValidate(identifier, row, BASIC);
-    if (!rowResult.valid) {
-      console.log(row);
-      return rowResult;
-    }
-  }
-
-  return metaschemaResult;
+  addSchema(newDataset, identifier);
+  addSchema(mockMetaschema);
+  return jsonschemaValidate(mockMetaschema.$id, newDataset, BASIC);
 }
 
 export async function read (dataset) {
