@@ -12,29 +12,29 @@ import {
 } from '@hyperjump/json-schema/draft-2020-12';
 import { defineVocabulary, BASIC } from '@hyperjump/json-schema/experimental';
 
-// Register vocabulary
+// Register dataset vocabulary
+const BASE_URL = 'https://json-unify.github.io/vocab-dataset';
 const ROOT = dirname(fileURLToPath(import.meta.url));
-defineVocabulary('https://json-unify.github.io/vocab-dataset/v1', {});
+defineVocabulary(`${BASE_URL}/v1`, {});
 addSchema(JSON.parse(readFileSync(resolve(ROOT, 'metaschemas', 'v1.json'), 'utf8')));
 
-// Global options
+// Teach Hyperjump to load remote schemas hosted on GitHub Pages
 addMediaTypePlugin('application/json', {
   parse: async (response) => [JSON.parse(await response.text()), undefined],
   matcher: (path) => path.endsWith('.json')
 });
 
 const randomBytesAsync = promisify(randomBytes);
-async function getRandomString() {
+async function getRandomDatasetId() {
   // Small enough to fit most of our constraints
   const result = await randomBytesAsync(6);
-  return result.toString('hex');
+  return `${BASE_URL}/dataset/${result.toString('hex')}`
 }
 
 export async function validate (dataset) {
-  const identifier = dataset.$id ||
-    `https://json-unify.github.io/vocab-dataset/${await getRandomString()}`;
-  const metaschemaResult = await jsonschemaValidate('https://json-unify.github.io/vocab-dataset/v1.json',
-    dataset, BASIC);
+  const identifier = dataset.$id || await getRandomDatasetId();
+  const metaschemaResult = await jsonschemaValidate(
+    `${BASE_URL}/v1.json`, dataset, BASIC);
   if (!metaschemaResult.valid) {
     return metaschemaResult;
   }
@@ -71,8 +71,7 @@ export async function read (dataset) {
     ? jsonpatch.applyPatch(data, dataset.datasetPatch).newDocument
     : result;
 
-  const identifier = dataset.$id ||
-    `https://json-unify.github.io/vocab-dataset/${await getRandomString()}`;
+  const identifier = dataset.$id || await getRandomDatasetId();
   addSchema(dataset, identifier);
   for (const row of finalResult) {
     const rowResult = await jsonschemaValidate(identifier, row, BASIC);
