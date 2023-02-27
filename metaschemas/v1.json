@@ -21,16 +21,7 @@
     "dataset": {
       "anyOf": [
         { "type": "array" },
-        {
-          "type": "object",
-          "required": [ "$ref" ],
-          "properties": {
-            "$ref": {
-              "type": "string",
-              "format": "uri-reference"
-            }
-          }
-        }
+        { "type": "string", "format": "uri-reference" }
       ]
     },
     "datasetAuthors": {

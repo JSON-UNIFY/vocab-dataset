@@ -1,3 +1,4 @@
+import assert from 'node:assert/strict';
 import { dirname, resolve } from 'node:path';
 import { promisify } from 'node:util';
 import { randomBytes } from 'node:crypto';
@@ -29,7 +30,7 @@ const randomBytesAsync = promisify(randomBytes);
 async function getRandomDatasetId() {
   // Small enough to fit most of our constraints
   const result = await randomBytesAsync(6);
-  return `${BASE_URL}/dataset/${result.toString('hex')}`
+  return `${BASE_URL}/random/${result.toString('hex')}`
 }
 
 export async function validate (dataset) {
@@ -41,10 +42,9 @@ export async function validate (dataset) {
   }
 
   addSchema(dataset, identifier);
-
   const data = Array.isArray(dataset.dataset)
     ? dataset.dataset
-    : await (await fetch(dataset.dataset.$ref)).json();
+    : await (await fetch(dataset.dataset)).json();
 
   for (const row of data) {
     const rowResult = await jsonschemaValidate(identifier, row, BASIC);
@@ -62,7 +62,7 @@ export async function read (dataset) {
 
   const data = Array.isArray(dataset.dataset)
     ? dataset.dataset
-    : await (await fetch(dataset.dataset.$ref)).json();
+    : await (await fetch(dataset.dataset)).json();
 
   for (const row of data) {
     result.push(row);

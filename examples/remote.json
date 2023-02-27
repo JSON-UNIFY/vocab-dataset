@@ -3,11 +3,9 @@
   "$schema": "https://json-unify.github.io/vocab-dataset/v1.json",
   "title": "A remotely located dataset of integers",
   "type": "integer",
+  "dataset": "https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json",
   "datasetAuthors": [ "Juan Cruz Viotti <jv@jviotti.com>" ],
   "datasetPatch": [
     { "op": "add", "path": "/-", "value": 999999 }
-  ],
-  "dataset": {
-    "$ref": "https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json"
-  }
+  ]
 }

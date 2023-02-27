@@ -30,9 +30,7 @@ const testCases = [
       $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
       title: 'Fibonacci example',
       type: 'integer',
-      dataset: {
-        $ref: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json'
-      }
+      dataset: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json'
     }
   },
   {
@@ -42,9 +40,7 @@ const testCases = [
       $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
       title: 'List of integers',
       type: 'integer',
-      dataset: {
-        $ref: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json'
-      },
+      dataset: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json',
       datasetPatch: [
         { op: 'add', path: '/-', value: 999 }
       ]
