@@ -56,3 +56,15 @@ for (const testCase of testCases) {
     assert.deepEqual(result, testCase.result);
   });
 }
+
+test('not modify source dataset', async () => {
+  const dataset = {
+    $schema: 'https://json-unify.github.io/vocab-dataset/v1.json',
+    title: 'Fibonacci example',
+    type: 'integer',
+    dataset: 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json'
+  };
+
+  await bundle(dataset);
+  assert.deepEqual(dataset.dataset, 'https://json-unify.github.io/vocab-dataset/examples/fibonacci-10.json');
+});
