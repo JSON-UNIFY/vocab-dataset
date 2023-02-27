@@ -42,11 +42,15 @@ export async function bundle (dataset) {
       result.dataset = await data.json();
     } else if (contentType.startsWith('text/csv')) {
       const content = await data.text();
-      result.dataset = content.split('\n').map((line) => {
-        return line.trim().split(',').map((word) => {
+      result.dataset = content.split('\n').filter((line) => {
+        return line.trim().length > 0;
+      }).map((line) => {
+        return line.trim().split(';').map((word) => {
           return word.trim().slice(1, word.length - 1);
         });
       });
+
+      console.log(result.dataset);
     } else {
       throw new Error(`Unknown content type: ${contentType}`);
     }
