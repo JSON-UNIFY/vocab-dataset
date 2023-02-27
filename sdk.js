@@ -39,7 +39,9 @@ export async function bundle (dataset) {
     const data = await fetch(result.dataset);
     const contentType = data.headers.get('content-type');
     if (contentType.startsWith('application/json')) {
-      result.dataset = await data.json();
+      const content = await data.json();
+      result.dataset = Array.isArray(content)
+        ? content : (await bundle(content)).dataset;
     } else if (contentType.startsWith('text/csv')) {
       // TODO: Improve CSV parsing to handle commas, etc
       const content = await data.text();
@@ -61,6 +63,12 @@ export async function bundle (dataset) {
 export async function validate (dataset) {
   const identifier = dataset.$id || await getRandomDatasetId();
   const newDataset = await bundle(dataset);
+  if (newDataset.datasetTransform) {
+    newDataset.dataset = jsone(newDataset.datasetTransform, {
+      dataset: newDataset.dataset
+    });
+  }
+
   const mockMetaschema = {
     $id: await getRandomDatasetId(),
     $schema: 'https://json-schema.org/draft/2020-12/schema',

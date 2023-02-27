@@ -1,0 +1,19 @@
+{
+  "$id": "https://json-unify.github.io/vocab-dataset/examples/country-codes-objects.json",
+  "$schema": "https://json-unify.github.io/vocab-dataset/v1.json",
+  "title": "A remotely located CSV dataset of country codes as JSON objects",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code": { "type": "string" },
+    "name": { "type": "string" }
+  },
+  "dataset": "https://json-unify.github.io/vocab-dataset/examples/country-codes.json",
+  "datasetTransform": {
+    "$map": { "$eval": "dataset" },
+    "each(x)": {
+      "code": { "$eval": "x[0]" },
+      "name": { "$eval": "x[1]" }
+    }
+  }
+}
