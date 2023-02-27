@@ -1,5 +1,5 @@
 import test from 'node:test';
-import { dirname, resolve } from 'node:path';
+import { dirname, resolve, extname } from 'node:path';
 import { fileURLToPath } from 'url';
 import { strict as assert } from 'node:assert';
 import { readdirSync, readFileSync } from 'node:fs';
@@ -62,6 +62,10 @@ const testCases = [
 
 const EXAMPLES = resolve(ROOT, 'examples');
 for (const file of readdirSync(EXAMPLES)) {
+  if (extname(file) !== '.json') {
+    continue;
+  }
+
   const dataset = JSON.parse(readFileSync(resolve(EXAMPLES, file), 'utf8'));
   if (Array.isArray(dataset)) {
     continue;

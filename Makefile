@@ -24,6 +24,8 @@ build/examples: | build
 	$(MKDIR) $@
 build/examples/%.json: examples/%.json | build/examples
 	$(INSTALL) -m 0664 $< $@
+build/examples/%.csv: examples/%.csv | build/examples
+	$(INSTALL) -m 0664 $< $@
 
 build/%: static/% | build
 	$(INSTALL) -m 0664 $< $@
@@ -52,4 +54,5 @@ all: test \
 	build/examples/idempotent-http-methods.json \
 	build/examples/fibonacci-10.json \
 	build/examples/remote.json \
+	build/examples/country-codes.csv \
 	build/.nojekyll
