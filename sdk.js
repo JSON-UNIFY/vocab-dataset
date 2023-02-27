@@ -65,21 +65,18 @@ export async function validate (dataset) {
 
 export async function read (dataset) {
   const result = [];
+  const newDataset = await bundle(dataset);
 
-  const data = Array.isArray(dataset.dataset)
-    ? dataset.dataset
-    : await (await fetch(dataset.dataset)).json();
-
-  for (const row of data) {
+  for (const row of newDataset.dataset) {
     result.push(row);
   }
 
-  const finalResult = dataset.datasetPatch
-    ? jsonpatch.applyPatch(data, dataset.datasetPatch).newDocument
+  const finalResult = newDataset.datasetPatch
+    ? jsonpatch.applyPatch(newDataset.dataset, newDataset.datasetPatch).newDocument
     : result;
 
-  const identifier = dataset.$id || await getRandomDatasetId();
-  addSchema(dataset, identifier);
+  const identifier = newDataset.$id || await getRandomDatasetId();
+  addSchema(newDataset, identifier);
   for (const row of finalResult) {
     const rowResult = await jsonschemaValidate(identifier, row, BASIC);
     if (!rowResult.valid) {
