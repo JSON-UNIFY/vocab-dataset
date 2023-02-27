@@ -65,6 +65,10 @@ export async function read (dataset) {
   if (newDataset.datasetPatch) {
     jsonpatch.applyPatch(newDataset.dataset, newDataset.datasetPatch);
   }
-  await validate(newDataset);
+  const result = await validate(newDataset);
+  if (!result.valid) {
+    throw new Error('Invalid dataset');
+  }
+
   return newDataset.dataset;
 }
