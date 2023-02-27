@@ -24,6 +24,7 @@ addMediaTypePlugin('application/json', {
   matcher: (path) => path.endsWith('.json')
 });
 
+// Hyperjump enforces schemas to always have an identifier
 const randomBytesAsync = promisify(randomBytes);
 async function getRandomDatasetId() {
   // Small enough to fit most of our constraints
