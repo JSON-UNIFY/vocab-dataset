@@ -34,12 +34,9 @@ async function getRandomDatasetId() {
 }
 
 export async function bundle (dataset) {
-  const newDataset = Object.assign({}, dataset);
-  if (typeof newDataset.dataset === 'string') {
-    newDataset.dataset = await (await fetch(newDataset.dataset)).json();
-  }
-
-  return newDataset;
+  return Object.assign({}, dataset, typeof dataset.dataset === 'string' ? {
+    dataset: await (await fetch(dataset.dataset)).json()
+  } : {});
 }
 
 export async function validate (dataset) {
