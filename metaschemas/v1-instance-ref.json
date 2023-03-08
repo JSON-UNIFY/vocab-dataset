@@ -1,0 +1,20 @@
+{
+  "$id": "https://json-unify.github.io/vocab-dataset/v1-instance-ref.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$dynamicAnchor": "meta",
+  "$vocabulary": {
+    "https://json-schema.org/draft/2020-12/vocab/core": true,
+    "https://json-schema.org/draft/2020-12/vocab/applicator": true,
+    "https://json-schema.org/draft/2020-12/vocab/validation": true,
+    "https://json-schema.org/draft/2020-12/vocab/format-annotation": true
+  },
+  "allOf": [
+    { "$ref": "https://json-schema.org/draft/2020-12/schema" }
+  ],
+  "properties": {
+    "instanceRef": {
+      "type": "string",
+      "format": "json-pointer"
+    }
+  }
+}

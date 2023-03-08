@@ -1,0 +1,9 @@
+{
+  "properties": {
+    "foo": {
+      "items": {
+        "instanceRef": "/foo/bar"
+      }
+    }
+  }
+}
