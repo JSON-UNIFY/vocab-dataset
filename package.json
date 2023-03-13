@@ -9,6 +9,6 @@
   "dependencies": {
     "@hyperjump/json-schema": "^1.4.0",
     "json-e": "^4.5.0",
-    "node-fetch": "^3.3.0"
+    "node-fetch": "^3.3.1"
   }
 }
